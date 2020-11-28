@@ -40,4 +40,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the messages for the user.
+     */
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'user_id')->orderByDesc('created_at');
+    }
 }
