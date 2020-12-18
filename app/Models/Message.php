@@ -22,11 +22,32 @@ class Message extends Model
         'number',
         'text',
         'status',
-        'sender_id'
+        'sender_id',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+     /**
+     * return th bootstrap class for displaying if the message was sent
+     *
+     * @return string
+     */
+     public function getListStyle() : string
+    {
+        switch ($this->status) {
+            case self::SENT:
+                return 'success';
+                break;
+            case self::FAILED:
+                return 'danger';
+                break;
+            case self::PENDING:
+            default:
+                return 'warning';
+                break;
+        }
     }
 }
