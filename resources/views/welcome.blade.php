@@ -4,8 +4,14 @@
     <div style="margin-top: 20px" class="d-flex align-items-center justify-content-center">
         @if (Auth::check())
             <div>
+                <div class="form-group">
+                    <a href="/create" class="btn btn-success">
+                        Send new message
+                    </a>
+                </div>
                 @if (!empty($messages))
                     @foreach ($messages as $message)
+                        <p>Your message history</p>
                         <div style="margin-bottom: 20px;">
                             <ul class="list-group">
                                 <li class="list-group-item">
@@ -22,8 +28,6 @@
                             </ul>
                         </div>
                     @endforeach
-                @else
-                    <h3>Create your first <a href="#">message</a></h3>
                 @endif
             </div>
         @else
